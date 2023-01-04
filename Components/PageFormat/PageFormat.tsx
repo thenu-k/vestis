@@ -7,7 +7,7 @@ type Props = {
 
 const PageFormat:FC<Props> = (props) => {
     return (
-        <S.PageFormatContainer>
+        <S.PageFormatContainer id='PageFormat'>
             Header
             {
                 props.children
