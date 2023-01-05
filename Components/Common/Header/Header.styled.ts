@@ -4,12 +4,19 @@ export const HeaderContainer = styled.header`
     width: 100%;
     height: 60px;
     box-shadow:0 0 5px #bcbcbc;
+    position: fixed; z-index: 9999; top: 0; left: 0;
+    background-color: white;
+    transition: all 200ms ease-in-out;
+    &.down{
+        transform: translateY(-100%);
+        box-shadow: none;
+    }
     & .inner{
         height: 100%;
         width: 95%;
         display: flex; align-items: center;
         & > *{
-            height: 100%
+            height: 100%;
         }
         &:first-child{
             & h2{
