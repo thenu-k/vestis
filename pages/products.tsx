@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import PageFormat from '../Components/PageFormat/PageFormat'
+import Products from '../Components/Pages/Products/Products'
 
 export default function ProductsPage() {
   return (
@@ -11,6 +12,7 @@ export default function ProductsPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageFormat>
+        <Products/>
       </PageFormat>
     </>
   )

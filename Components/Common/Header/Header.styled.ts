@@ -14,7 +14,7 @@ export const HeaderContainer = styled.header`
         &:first-child{
             & h2{
                 font-size: 1.5em;
-                font-weight: 800;
+                font-weight: 600;
                 letter-spacing: 1px;
                 height: 100%;
                 padding-right: 10px;
