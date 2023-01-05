@@ -12,7 +12,7 @@ export const ProductsContainer = styled.div`
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-auto-rows: auto;
-            grid-gap: 15px;
+            grid-gap: 20px;
         }
     }
 `
