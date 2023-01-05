@@ -49,10 +49,22 @@ export const HeaderContainer = styled.header`
                     height: 100%; width: 100px;
                     box-sizing: border-box;
                     background-color: white;
-                    padding: 0 20px;
                     cursor: pointer;
                     &:hover{
                         background-color: #eeeeee;
+                    }
+                }
+                &.buttonContainer{
+                    position: relative;
+                    & span{
+                        position: absolute;
+                        z-index: 1000;
+                        right: 0;
+                        width: 20px; height: 20px;
+                        border-radius: 9999px;
+                        font-size: 0.8em;
+                        background-color: red;
+                        color: white;
                     }
                 }
             }
