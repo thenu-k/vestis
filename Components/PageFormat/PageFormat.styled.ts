@@ -6,6 +6,6 @@ export const PageFormatContainer = styled.div`
         margin-top: 60px;
         width: 100%;
         display: flex; align-items: center; flex-direction: column;
-        height: 1000px;
+        min-height: calc(100vh - 60px);
     }
 `

@@ -4,7 +4,7 @@ import * as S from './ProductTemplate.styled'
 const ProductTemplate = () => {
     const  data = {
         id: 123,
-        title: 'Title',
+        title: 'Mountain Recreational Jacket',
         price: 1234,
         imageURL: 'https://image1.superdry.com/static/images/optimised/upload9223368955666189433.jpg'
     }
