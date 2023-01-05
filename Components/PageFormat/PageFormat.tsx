@@ -7,11 +7,13 @@ type Props = {
 
 const PageFormat:FC<Props> = (props) => {
     return (
-        <S.PageFormatContainer id='PageFormat'>
-            Header
-            {
-                props.children
-            }
+        <S.PageFormatContainer id='PageFormat' className='center'>
+            <div className="pageFormat inner">
+                Header
+                {
+                    props.children
+                }
+            </div>
         </S.PageFormatContainer>
     );
 }
