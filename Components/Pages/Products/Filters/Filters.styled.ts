@@ -41,6 +41,7 @@ export const Filters = styled.div`
                 &:hover{
                     & .drop-down-content{
                         display: flex;
+                        flex-direction: column; align-items: flex-start;
                     }
                     & button{
                         /* border-radius: 5px 5px 0 0; */
