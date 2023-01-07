@@ -16,7 +16,7 @@ export const Filters = styled.div`
                 &:first-child{
                     margin-right: 10px;
                 }
-                & button{
+                & >button{
                     padding: 15px 0;
                     width: 100%;
                     background-color: #eeeeee;
@@ -32,7 +32,7 @@ export const Filters = styled.div`
                     z-index: 999;
                     top: 100%;
                     left: 0;
-                    height: 200px; width: 150px;
+                    height: fit-content; width: 150px;
                     overflow: scroll;
                     background-color: white;
                     border:2px solid black;

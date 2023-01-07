@@ -26,16 +26,20 @@ const Filters = () => {
         //@ts-ignore
         const sizeFilter = e.target.id
         const newFilters = returnFilterObject(filters, 'sizeFilter', sizeFilter)
-        console.log(newFilters)
         setFilters(newFilters)
     }
     const handleLetterFilter = (e: React.MouseEvent<HTMLDivElement>):void => {
         //@ts-ignore
         const letterFilter = e.target.id
-        const newFilters = returnFilterObject(filters, 'letter', letterFilter)
+        const newFilters = returnFilterObject(filters, 'letterFilter', letterFilter)
         setFilters(newFilters)
     }
-    const handlePriceFilter = () => {}
+    const handlePriceFilter = (e: React.MouseEvent<HTMLDivElement>):void=> {
+        //@ts-ignore
+        const priceFilter = e.target.id
+        const newFilters = returnFilterObject(filters, 'letterFilter', priceFilter)
+        setFilters(newFilters)
+    }
     useEffect(()=>{
         console.log(filters)
     }, [filters])
@@ -43,6 +47,15 @@ const Filters = () => {
         <S.Filters id='Filters' className='center'>
             <div className="inner filters">
                 <div className="seperator one">
+                    {/* <div className="drop-down letterFilter">
+                        <button id='letterButton'>Drop Down</button>
+                        <div className="drop-down-content" onClick={handleLetterFilter}>
+                            <button id='asc'>A to Z</button>
+                            <button id='desc'>Z to A</button>
+                        </div>
+                    </div> */}
+                </div>
+                <div className="seperator two">
                     <div className="drop-down sizeFilter">
                         <button id='sizeButton'>Drop Down</button>
                         <div className="drop-down-content" onClick={handleSizeFilter}>
@@ -50,15 +63,12 @@ const Filters = () => {
                             <button id='S'>S</button>
                         </div>
                     </div>
-                    <div className="drop-down letterFilter" onClick={handleLetterFilter}>
-                        <button id='letterButton'>Drop Down</button>
-                        <div className="drop-down-content"></div>
-                    </div>
-                </div>
-                <div className="seperator two">
-                    <div className="drop-down price" onClick={handlePriceFilter}>
+                    <div className="drop-down price">
                         <button id='priceFilter'>Drop Down</button>
-                        <div className="drop-down-content"></div>
+                        <div className="drop-down-content" onClick={handlePriceFilter}>
+                            <button id='desc'>Price: High to Low</button>
+                            <button id='asc'>Price: Low to High</button>
+                        </div>
                     </div>
                 </div>
             </div>
