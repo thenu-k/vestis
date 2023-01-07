@@ -1,47 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Filters.styled'
 
-interface I_Filter_I {
-    sizeFilter: string | null, priceFilter: string | null
-}
-
-
-//Helper Function
-const returnFilterObject = (currentFilters:I_Filter_I,type:string, value:string):I_Filter_I => {
-    const tempObj = currentFilters
-    if(value){
-        //@ts-ignore
-        tempObj[`${type}`] = value
-        return tempObj
-    }else{
-        return currentFilters
-    }
-}
-
 const Filters = () => {
-    const [filters, setFilters] = useState<I_Filter_I>({
-        sizeFilter: null, priceFilter: null
-    })
-    const handleSizeFilter = (e: React.MouseEvent<HTMLDivElement>):void => {
+    const [priceFilter, setPriceFilter] = useState<String | null>(null)
+    const [sizeFilter, setSizeFilter] = useState<String | null>(null)
+    const handleSizeFilter = (e: React.MouseEvent<HTMLDivElement>) => {
         //@ts-ignore
-        const sizeFilter = e.target.id
-        const newFilters = returnFilterObject(filters, 'sizeFilter', sizeFilter)
-        setFilters(newFilters)
+        const newFilter = e.target.id
+        if(newFilter){
+            setSizeFilter(newFilter)
+        }
     }
-    const handlePriceFilter = (e: React.MouseEvent<HTMLDivElement>):void=> {
+    const handlePriceFilter = (e: React.MouseEvent<HTMLDivElement>)=> {
         //@ts-ignore
-        const priceFilter = e.target.id
-        const newFilters = returnFilterObject(filters, 'priceFilter', priceFilter)
-        setFilters(newFilters)
+        const newFilter = e.target.id
+        if(newFilter){
+            setPriceFilter(newFilter)
+        }
     }
     useEffect(()=>{
-        console.log('change')
-    }, [filters])
+        //
+    },[priceFilter, sizeFilter])
     return (
         <S.Filters id='Filters' className='center'>
             <div className="inner filters">
                 <div className="seperator one">
-                    <h3>{JSON.stringify(filters)}</h3>
+                    <h3>Results for: ...</h3>
                 </div>
                 <div className="seperator two">
                     <div className="drop-down sizeFilter">
