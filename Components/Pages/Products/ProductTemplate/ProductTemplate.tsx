@@ -1,30 +1,25 @@
 import { useRouter } from 'next/router'
 import * as S from './ProductTemplate.styled'
 
-const ProductTemplate = () => {
-    const  data = {
-        id: 123,
-        title: 'Mountain Recreational Jacket',
-        price: 1234,
-        imageURL: 'https://image1.superdry.com/static/images/optimised/upload9223368955666189433.jpg'
-    }
+//@ts-ignore
+const ProductTemplate = ({productData}) => {
     const router = useRouter()
     const redirectToProduct = ():void => {
-        router.push(`/item/${data.id}`)
+        router.push(`/item/${productData.itemID}`)
     }
     return (
         <S.ProductTemplateContainer className='productTemplate' onClick={redirectToProduct}>
             <div className="image"
                 style={{
-                    backgroundImage: `url('${data.imageURL}')`
+                    backgroundImage: `url('${productData.imageURL}')`
                 }}
             ></div>
             <div className="details">
                 <div className="title">
-                    <p>{data.title}</p>
+                    <p>{productData.title}</p>
                 </div>
                 <div className="price">
-                    <p>${data.price/100}</p>
+                    <p>${productData.price/100}</p>
                 </div>
             </div>
 

@@ -11,7 +11,7 @@ class dbFunctions{
             try{
                 const rawPostData = await getDocs(q)
                 const data = rawPostData.docs.map(doc => ({
-                    itemnmID: doc.id,
+                    itemID: doc.id,
                     imageURL: doc.data().imageURL,
                     title: doc.data().title,
                     description: doc.data().description,

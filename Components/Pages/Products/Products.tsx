@@ -15,8 +15,9 @@ const Products = () => {
         const dbFns = new dbFunctions;
         //@ts-ignore
         dbFns.itemSearch(currentParams.search, currentParams.priceFilter, currentParams.sizeFilter)
-        .then((result)=>{
-            console.log(result)
+        .then((data)=>{
+            setSearchResults(data)
+            setLoading(false)
         })
         .catch((err)=>{
             console.log(err)
@@ -28,7 +29,16 @@ const Products = () => {
                 {/*@ts-ignore*/}
                 <Filters/>
                 <div className="productGrid outer">
-                    <ProductTemplate/>
+                {
+                    (loading===false)
+                        ? (
+                            //@ts-ignore
+                            searchResults.map(item => {return(
+                                <ProductTemplate productData={item}/>
+                            )})
+                        )
+                        : <>Loading</>
+                }
                 </div>
             </div>
         </S.ProductsContainer>
