@@ -2,11 +2,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import * as S from './Filters.styled'
 
-interface I_urlQuery_I_Frag {
-    priceFilter?: string, sizeFilter?: string
-}
-type T_urlQuery_T = Object | null
-
 const Filters = () => {
     const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
@@ -25,11 +20,14 @@ const Filters = () => {
             setPriceFilter(newFilter)
         }
     }
-    console.log(router.query)
     useEffect(()=>{
+        const currentParams = router.query
         //Checking current URL params 
         //Creating the url query step by step
-        let newQuery:JSON = {} as JSON
+        let newQuery:JSON = {
+            //@ts-ignore    
+            search: currentParams.search
+        }
         if(priceFilter){
             //@ts-ignore
             newQuery.priceFilter = priceFilter
@@ -38,7 +36,6 @@ const Filters = () => {
             //@ts-ignore
             newQuery.sizeFilter = sizeFilter
         }
-        //console.log(newQuery)
         if(priceFilter || sizeFilter){
             router.push({
                 pathname: '/products',
@@ -46,7 +43,7 @@ const Filters = () => {
                 query: newQuery,
             })
         }
-    },[priceFilter, sizeFilter])
+    },[priceFilter, sizeFilter])   // these two variable invoke the useEffect twice - will leave as it is for now
     return (
         <S.Filters id='Filters' className='center'>
             <div className="inner filters">
