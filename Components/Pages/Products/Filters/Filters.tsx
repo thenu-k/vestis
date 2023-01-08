@@ -1,8 +1,11 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import dbFunctions from '../../../../clientFunctions/dBFunctions';
 import * as S from './Filters.styled'
 
-const Filters = () => {
+
+//@ts-ignore
+const Filters = ({updateParentResults}) => {
     const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
     const [sizeFilter, setSizeFilter] = useState<String | null>(null)
@@ -20,10 +23,9 @@ const Filters = () => {
             setPriceFilter(newFilter)
         }
     }
-    useEffect(()=>{
+    useEffect(() =>{
+        //Checking current URL params and creating the new params step by step
         const currentParams = router.query
-        //Checking current URL params 
-        //Creating the url query step by step
         let newQuery:JSON = {
             //@ts-ignore    
             search: currentParams.search
@@ -43,6 +45,9 @@ const Filters = () => {
                 query: newQuery,
             })
         }
+        //Getting the results for the current search
+        const dbFns = new dbFunctions;
+        console.log(updateParentResults)
     },[priceFilter, sizeFilter])   // these two variable invoke the useEffect twice - will leave as it is for now
     return (
         <S.Filters id='Filters' className='center'>
