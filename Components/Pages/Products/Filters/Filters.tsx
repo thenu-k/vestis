@@ -5,7 +5,7 @@ import * as S from './Filters.styled'
 
 
 //@ts-ignore
-const Filters = ({updateParentResults, updateParentLoading}) => {
+const Filters = () => {
     const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
     const [sizeFilter, setSizeFilter] = useState<String | null>(null)
@@ -23,11 +23,6 @@ const Filters = ({updateParentResults, updateParentLoading}) => {
             setPriceFilter(newFilter)
         }
     }
-    //Getting the results for the current search
-    const currentParams = router.query
-    const dbFns = new dbFunctions;
-    //@ts-ignore
-    const newResults = dbFns.itemSearch(currentParams.search, currentParams.priceFilter, currentParams.sizeFilter)
     //Checking current URL params and creating the new params step by step
     useEffect(() =>{
         const currentParams = router.query

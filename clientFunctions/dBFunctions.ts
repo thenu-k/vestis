@@ -6,7 +6,7 @@ class dbFunctions{
         this.#sizeFilter
         this.#search
     }
-    itemSearch( search:string,priceFilter:string, sizeFilter:string){
+    async itemSearch( search:string,priceFilter:string, sizeFilter:string){
         return 0;
     }
 }
