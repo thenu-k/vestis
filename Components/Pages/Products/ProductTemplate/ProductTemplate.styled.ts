@@ -25,7 +25,7 @@ export const ProductTemplateContainer = styled.div`
         }
         & .title p{
             width: 100%;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
             text-align: left;
         }

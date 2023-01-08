@@ -12,6 +12,7 @@ const Products = () => {
     const router = useRouter()
     let currentParams = router.query
     useEffect(() => {
+        setLoading(true)
         const dbFns = new dbFunctions;
         //@ts-ignore
         dbFns.itemSearch(currentParams.search, currentParams.priceFilter, currentParams.sizeFilter)
