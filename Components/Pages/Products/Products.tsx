@@ -12,8 +12,15 @@ const Products = () => {
     const router = useRouter()
     let currentParams = router.query
     useEffect(() => {
-        console.log(currentParams)
         const dbFns = new dbFunctions;
+        //@ts-ignore
+        dbFns.itemSearch(currentParams.search, currentParams.priceFilter, currentParams.sizeFilter)
+        .then((result)=>{
+            console.log(result)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }, [router])
     return (
         <S.ProductsContainer id='Products' className='center'>
