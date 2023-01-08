@@ -2,6 +2,11 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import * as S from './Filters.styled'
 
+interface I_urlQuery_I_Frag {
+    priceFilter?: string, sizeFilter?: string
+}
+type T_urlQuery_T = Object | null
+
 const Filters = () => {
     const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
@@ -20,27 +25,27 @@ const Filters = () => {
             setPriceFilter(newFilter)
         }
     }
+    console.log(router.query)
     useEffect(()=>{
         //Checking current URL params 
-        const urlParams = new URLSearchParams(window.location.search);
-        console.log(urlParams)
         //Creating the url query step by step
-        let urlQuery = '?'
+        let newQuery:JSON = {} as JSON
         if(priceFilter){
             //@ts-ignore
-            const priceParams = new URLSearchParams({
-                priceFilter: priceFilter
-            });
-            urlQuery += priceParams
+            newQuery.priceFilter = priceFilter
         }
         if(sizeFilter){
             //@ts-ignore
-            const sizeParams = new URLSearchParams({
-                sizeFilter: sizeFilter
-            });
-            urlQuery += '&' + sizeParams
+            newQuery.sizeFilter = sizeFilter
         }
-        router.push(router.pathname+urlQuery)
+        //console.log(newQuery)
+        if(priceFilter || sizeFilter){
+            router.push({
+                pathname: '/products',
+                //@ts-ignore
+                query: newQuery,
+            })
+        }
     },[priceFilter, sizeFilter])
     return (
         <S.Filters id='Filters' className='center'>
