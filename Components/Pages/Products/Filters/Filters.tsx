@@ -19,7 +19,9 @@ const Filters = () => {
         }
     }
     useEffect(()=>{
-        //
+        (priceFilter)
+            ?   null
+            : null
     },[priceFilter, sizeFilter])
     return (
         <S.Filters id='Filters' className='center'>
