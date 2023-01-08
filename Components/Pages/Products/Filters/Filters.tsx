@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import * as S from './Filters.styled'
 
 const Filters = () => {
+    const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
     const [sizeFilter, setSizeFilter] = useState<String | null>(null)
     const handleSizeFilter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -19,9 +21,26 @@ const Filters = () => {
         }
     }
     useEffect(()=>{
-        (priceFilter)
-            ?   null
-            : null
+        //Checking current URL params 
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams)
+        //Creating the url query step by step
+        let urlQuery = '?'
+        if(priceFilter){
+            //@ts-ignore
+            const priceParams = new URLSearchParams({
+                priceFilter: priceFilter
+            });
+            urlQuery += priceParams
+        }
+        if(sizeFilter){
+            //@ts-ignore
+            const sizeParams = new URLSearchParams({
+                sizeFilter: sizeFilter
+            });
+            urlQuery += '&' + sizeParams
+        }
+        router.push(router.pathname+urlQuery)
     },[priceFilter, sizeFilter])
     return (
         <S.Filters id='Filters' className='center'>
