@@ -6,18 +6,12 @@ import * as S from './Products.styled'
 import  ProductTemplate from './ProductTemplate/ProductTemplate'
 
 const Products = () => {
-    const router = useRouter()
-    //Negative prop drilling
-    const [searchResuts, setSearchResults] = useState<any>(null)
+    const [searchResults, setSearchResults] = useState<any>()
     const [loading, setLoading] = useState<boolean>(true)
-    const updateParentResults  = (value:any) => {
-        setSearchResults(value)
-    }
-    const updateParentLoading = (value:boolean) => {
-        setLoading(value)
-    }
+    //Getting product details
+    const router = useRouter()
+    let currentParams = router.query
     useEffect(() => {
-        const currentParams = router.query
         console.log(currentParams)
         const dbFns = new dbFunctions;
     }, [router])
@@ -25,7 +19,7 @@ const Products = () => {
         <S.ProductsContainer id='Products' className='center'>
             <div className="products inner">
                 {/*@ts-ignore*/}
-                <Filters updateParentResults={updateParentResults} updateParentLoading={updateParentLoading}/>
+                <Filters/>
                 <div className="productGrid outer">
                     <ProductTemplate/>
                 </div>

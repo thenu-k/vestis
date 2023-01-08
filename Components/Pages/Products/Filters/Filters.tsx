@@ -1,14 +1,13 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import dbFunctions from '../../../../clientFunctions/dBFunctions';
 import * as S from './Filters.styled'
 
 
-//@ts-ignore
 const Filters = () => {
     const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
     const [sizeFilter, setSizeFilter] = useState<String | null>(null)
+    //Filter button handlers
     const handleSizeFilter = (e: React.MouseEvent<HTMLDivElement>) => {
         //@ts-ignore
         const newFilter = e.target.id
