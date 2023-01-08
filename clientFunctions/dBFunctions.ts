@@ -6,8 +6,8 @@ class dbFunctions{
         this.#sizeFilter
         this.#search
     }
-    itemSearch(priceFilter:string, sizeFilter:string, search:string){
-
+    itemSearch( search:string,priceFilter:string, sizeFilter:string){
+        return 0;
     }
 }
 

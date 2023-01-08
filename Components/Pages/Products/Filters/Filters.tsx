@@ -5,7 +5,7 @@ import * as S from './Filters.styled'
 
 
 //@ts-ignore
-const Filters = ({updateParentResults}) => {
+const Filters = ({updateParentResults, updateParentLoading}) => {
     const router = useRouter()
     const [priceFilter, setPriceFilter] = useState<String | null>(null)
     const [sizeFilter, setSizeFilter] = useState<String | null>(null)
@@ -23,8 +23,13 @@ const Filters = ({updateParentResults}) => {
             setPriceFilter(newFilter)
         }
     }
+    //Getting the results for the current search
+    const currentParams = router.query
+    const dbFns = new dbFunctions;
+    //@ts-ignore
+    const newResults = dbFns.itemSearch(currentParams.search, currentParams.priceFilter, currentParams.sizeFilter)
+    //Checking current URL params and creating the new params step by step
     useEffect(() =>{
-        //Checking current URL params and creating the new params step by step
         const currentParams = router.query
         let newQuery:JSON = {
             //@ts-ignore    
@@ -45,9 +50,6 @@ const Filters = ({updateParentResults}) => {
                 query: newQuery,
             })
         }
-        //Getting the results for the current search
-        const dbFns = new dbFunctions;
-        console.log(updateParentResults)
     },[priceFilter, sizeFilter])   // these two variable invoke the useEffect twice - will leave as it is for now
     return (
         <S.Filters id='Filters' className='center'>
